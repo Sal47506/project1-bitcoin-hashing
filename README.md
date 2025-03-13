@@ -1,7 +1,5 @@
 # Large Scale Data Processing: Project 1
 
-# Large Scale Data Processing: Project 1
-
 ## Results
 | Difficulty (k) | Number of Trials | Time Elapsed (s) | Found Nonce |
 |--------------|----------------|----------------|------------|

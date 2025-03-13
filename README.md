@@ -11,7 +11,17 @@
 
 ## For k = 7
 
-I used a cluster with a configuration of 1 n2-standard-n2 master node and 2 n2-standard-n4 worker nodes, 8 YARN cores, and a YARN memory of 25.77 GB.
+The following cluster setup was used:
+
+- **Master Node**: `n2-standard-2`
+- **Worker Nodes**: `n2-standard-4` (2 nodes)
+- **Primary Disk Type**: `pd-balanced`
+- **Primary Disk Size**: `100GB` (master), `200GB` (workers)
+- **Local SSDs**: `0`
+- **YARN Cores**: `8`
+- **YARN Memory**: `25.77GB`
+
+Here is the result:
 
 ```shell
 25/03/13 08:11:08 INFO GoogleHadoopOutputStream: hflush(): No-op due to rate limit (RateLimiter[stableRate=0.2qps]): readers will *not* yet see flushed data for gs://dataproc-temp-us-central1-548842568978-4jg4mli6/fe599feb-fe39-4455-b975-ecc5fe36e344/spark-job-history/application_1741853015803_0004.inprogress [CONTEXT ratelimit_period="1 MINUTES [skipped: 8]" ]

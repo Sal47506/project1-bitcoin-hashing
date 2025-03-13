@@ -1,6 +1,6 @@
 # Large Scale Data Processing: Project 1
 
-## Results
+## Local Results
 | Difficulty (k) | Number of Trials | Time Elapsed (s) | Found Nonce |
 |--------------|----------------|----------------|------------|
 | 2 | 100 | 2s | 1771420990 |
@@ -8,6 +8,18 @@
 | 4 | 1,000,000 | 6s | 718817850 |
 | 5 | 10,000,000 | 38s | 128286865 |
 | 6 | 100,000,000 | 2475s | 1775646461 |
+
+## For k = 7
+
+I used a cluster with a configuration of 1 n2-standard-n2 master node and 2 n2-standard-n4 worker nodes, 8 YARN cores, and a YARN memory of 25.77 GB.
+
+```shell
+25/03/13 08:11:08 INFO GoogleHadoopOutputStream: hflush(): No-op due to rate limit (RateLimiter[stableRate=0.2qps]): readers will *not* yet see flushed data for gs://dataproc-temp-us-central1-548842568978-4jg4mli6/fe599feb-fe39-4455-b975-ecc5fe36e344/spark-job-history/application_1741853015803_0004.inprogress [CONTEXT ratelimit_period="1 MINUTES [skipped: 8]" ]
+found. count:4
+(1775646461this_is_a_bitcoin_block_of_13733733,000000042fa75b98ffdfedd3df533d44f2c4be1589ff511c0ce2eac780f16885)
+Time elapsed:2475s
+```
+
 
 ## Code Modification for Sequential Nonces
 The original code generates nonces randomly. To modify it to generate sequential nonces from 1 to `n`, update this line in `main.scala`:

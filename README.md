@@ -13,6 +13,7 @@
 The original code generates nonces randomly. To modify it to generate sequential nonces from 1 to `n`, update this line in `main.scala`:
 ```scala
 val nonce = sc.range(1, trials + 1)
+```
 
 ## Efficiency Comparison
 Using a sequential nonce generation method is slightly faster compared to the randomized approach, as it avoids the overhead of generating random numbers and ensures a more uniform distribution of tasks among Spark partitions.

@@ -1,4 +1,26 @@
 # Large Scale Data Processing: Project 1
+
+# Large Scale Data Processing: Project 1
+
+## Results
+| Difficulty (k) | Number of Trials | Time Elapsed (s) | Found Nonce |
+|--------------|----------------|----------------|------------|
+| 2 | 100 | 2s | 1771420990 |
+| 3 | 100000 | 3s | 1350761418 |
+| 4 | 1,000,000 | 6s | 718817850 |
+| 5 | 10,000,000 | 38s | 128286865 |
+| 6 | 100,000,000 | 2475s | 1775646461 |
+
+## Code Modification for Sequential Nonces
+The original code generates nonces randomly. To modify it to generate sequential nonces from 1 to `n`, update this line in `main.scala`:
+```scala
+val nonce = sc.range(1, trials + 1)
+
+## Efficiency Comparison
+Using a sequential nonce generation method is slightly faster compared to the randomized approach, as it avoids the overhead of generating random numbers and ensures a more uniform distribution of tasks among Spark partitions.
+
+
+
 ## Understanding Git
 If you're unfamiliar with version control systems, especially Git, please consult the [Git Handbook](https://guides.github.com/introduction/git-handbook/) and some of the additional resources it provides.
 

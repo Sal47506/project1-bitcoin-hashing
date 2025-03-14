@@ -1,13 +1,13 @@
 # Large Scale Data Processing: Project 1
 
 ## Local Results
-| Difficulty (k) | Number of Trials | Time Elapsed (s) | Found Nonce |
-|--------------|----------------|----------------|------------|
-| 2 | 100 | 2s | 1771420990 |
-| 3 | 100000 | 3s | 1350761418 |
-| 4 | 1,000,000 | 6s | 718817850 |
-| 5 | 10,000,000 | 38s | 128286865 |
-| 6 | 100,000,000 | 2475s | 1775646461 |
+| **k (Difficulty)** | **Trials**      | **Time (s)** | **Nonce (xS)**   | **Hash Value** |
+|--------------------|----------------|--------------|------------------|------------------------------------------------------------------|
+| 2                 | 100             | 2            | 1196761553       | 009c38517131a0a08998f040e3a27c73e75461edc74094f1a857f01a8753ad87 |
+| 3                 | 100,000         | 2            | 1771420990       | 0003fe9da5384adfc0c37017cc0f8539e5965b7893303d09fd0e0e889547509b |
+| 4                 | 1,000,000       | 3            | 1350761418       | 0000da14139fc02e96a90cb9a09c56ff9617ff1954cbdfd09ce903ffd46fc7cb |
+| 5                 | 10,000,000      | 6            | 718817850        | 000009ceca75f4ff30d1946e500c5197f0549b15b8c3eb408cfd2c276c84cf3a |
+| 6                 | 100,000,000     | 38           | 128286865        | 0000002abd264c6b6c53c2798f41db4827f1baf2f772963e5fe0c5a6c29cca2a |
 
 ## For k = 7
 
@@ -29,6 +29,11 @@ found. count:4
 (1775646461this_is_a_bitcoin_block_of_13733733,000000042fa75b98ffdfedd3df533d44f2c4be1589ff511c0ce2eac780f16885)
 Time elapsed:2475s
 ```
+| **k (Difficulty)** | **Trials**       | **Time (s)** | **Nonce (xS)**   | **Hash Value** |
+|-----------------|----------------|------------|---------------|------------------------------------------------------------------|
+| 7               | 100,000,000    | 2475       | 1775646461    | 000000042fa75b98ffdfedd3df533d44f2c4be1589ff511c0ce2eac780f16885 |
+
+
 
 
 ## Code Modification for Sequential Nonces
@@ -38,7 +43,7 @@ val nonce = sc.range(1, trials + 1)
 ```
 
 ## Efficiency Comparison
-Using a sequential nonce generation method is slightly faster compared to the randomized approach, as it avoids the overhead of generating random numbers and ensures a more uniform distribution of tasks among Spark partitions.
+Using sequential nonce generation is slightly faster than the randomized approach as it eliminates the overhead of generating random numbers. Random nonce generation can lead to uneven work distribution across partitions, causing some tasks to do more work than others. With sequential nonces, the partitions receive a predictable range of values, reducing redundant work because it's not checking the same nonce twice and ensuring even workload distribution. This deterministic partitioning leads to more predictable execution, improved cache locality, and better branch prediction, resulting in slight performance gains. This is why for all the trials (equal number of trials for both experiments) from k = 2 to k = 6 being either faster or took the same time to find the hash value as it did with random nonce generation.
 
 
 

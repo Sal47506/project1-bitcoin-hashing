@@ -1,4 +1,4 @@
-# Large Scale Data Processing: Project 1
+# Large Scale Data Processing: Project 1 Name: Salamun Nuhin
 
 ## Local Results
 | **k (Difficulty)** | **Trials**      | **Time (s)** | **Nonce (x)**   | **Hash Value (xS)** |
